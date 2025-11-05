@@ -16,12 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('catalog.urls')),
+
+    # каталог на /catalog/
+    path('catalog/', include(('catalog.urls', 'catalog'), namespace='catalog')),
+
+    # блог на /blogs/
+    path('blogs/', include(('blogs.urls', 'blogs'), namespace='blogs')),
+
+    # главная -> блог, и ОБЯЗАТЕЛЬНО имя 'home'
+    path('', RedirectView.as_view(pattern_name='blogs:post_list', permanent=False), name='home'),
 ]
 
 if settings.DEBUG:
