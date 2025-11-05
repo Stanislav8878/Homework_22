@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}Мой сайт{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="icon" href="{% static 'favicon.ico' %}" sizes="any">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+      {% block head %}{% endblock %}
+</head>
+<body>
+  {% include "includes/_menu.html" %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <script src="{% static 'js/site.js' %}"></script>
+</body>
+</html>

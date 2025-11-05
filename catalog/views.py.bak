@@ -1,17 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Contact
 from .forms import ProductForm
-from django.views.generic import ListView, DetailView, TemplateView
-try:
-    from .models import Product
-except Exception:
-    Product = None
-class ProductListView(ListView):
-    model = Product; template_name = 'catalog/product_list.html'; context_object_name = 'products'
-class ProductDetailView(DetailView):
-    model = Product; template_name = 'catalog/product_detail.html'; context_object_name = 'product'
-class ContactsView(TemplateView):
-    template_name = 'catalog/contacts.html'
+
 
 def home(request):
     # Дополнительное задание: вывод последних 5 продуктов в консоль

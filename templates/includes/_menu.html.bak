@@ -1,0 +1,5 @@
+<nav>
+  <a href="/catalog/">Каталог</a> |
+  <a href="/blogs/">Блог</a> |
+  <a href="/catalog/contacts/">Контакты</a>
+</nav>

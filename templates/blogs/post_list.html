@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Блог{% endblock %}
+{% block content %}
+  <h1>Блог</h1>
+  <p><a href="{% url 'blogs:post_create' %}">Создать статью</a></p>
+  <ul>
+    {% for post in posts %}
+      <li>
+        <a href="{% url 'blogs:post_detail' post.pk %}">{{ post.title }}</a>
+        {% if post.preview %}<br><img src="{{ post.preview.url }}" alt="" width="150">{% endif %}
+        <div>Просмотры: {{ post.views }}</div>
+        <div>Опубликовано: {{ post.is_published|yesno:"да,нет" }}</div>
+        <small>{{ post.created_at }}</small>
+      </li>
+    {% empty %}
+      <li>Пока нет статей.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
